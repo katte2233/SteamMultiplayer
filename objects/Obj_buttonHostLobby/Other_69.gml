@@ -13,16 +13,6 @@ switch(async_load[?"event_type"])
 		{
 			steam_lobby_set_data("isGamemakerTest", "true");
 			steam_lobby_set_data("Creator", steam_get_persona_name());
-			
-	        // Add host to playerList
-	        array_push(obj_Server.playerList,
-	        {
-	            steamID: steam_get_user_steam_id(),
-	            steamName: steam_get_persona_name(),
-	            character: undefined,
-	            startPos: grab_spawn_point(0),
-	            lobbyMemberID: 0
-	        });
 		}
 		
 		room_goto(rm_GameRoom);
