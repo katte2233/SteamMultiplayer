@@ -10,4 +10,6 @@ moveSpeed = 5
 fireCooldown = 50
 currentCooldown = 0
 
+points = 0;
+
 init_controls()
