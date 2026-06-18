@@ -9,8 +9,7 @@ function paddle_movement(){
 	
 	if((xInput != 0)	&&	(yInput != 0)) _spd*= 0.707;
 	
-	x += xInput * _spd;
-	y += yInput * _spd;
+	move_and_collide(xInput*_spd,yInput*_spd,obj_Wall);
 	
 	// Logic for getting hit by bullet
 	if currentCooldown > 0 then --currentCooldown
