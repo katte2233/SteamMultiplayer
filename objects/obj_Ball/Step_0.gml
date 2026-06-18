@@ -1,7 +1,7 @@
 /// @description Movement
 
 // Lazy solution to mimic a random ball movement.
-collision = collision_circle(x,y,16,obj_Entity,true,true)
+/*collision = collision_circle(x,y,16,obj_Entity,true,true)
 if collision != noone and !instance_position(collision.x,collision.y,obj_Player){
 	if x > room_width-32{
 		direction = point_direction(collision.x,collision.y,0,room_height/2) + irandom(25);
@@ -23,9 +23,11 @@ if collision != noone and !instance_position(collision.x,collision.y,obj_Player)
 	++image_index
 	if image_index > image_number then image_index = 0
 	
-}
+}*/
 
-x += lengthdir_x(moveSpeed, direction)
+move_bounce_solid(true);
+
+/*x += lengthdir_x(moveSpeed, direction)
 y += lengthdir_y(moveSpeed, direction)
 
 // Lazy solution to reset the ball if it leaves the boundaries.

@@ -144,3 +144,17 @@ function update_player_points(_b) {
         }
     }
 }
+
+//@self obj_Client
+function update_ball(_b)
+{
+    var _x         = buffer_read(_b, buffer_u16);
+    var _y         = buffer_read(_b, buffer_u16);
+    var _direction = buffer_read(_b, buffer_f32);
+    var _speed     = buffer_read(_b, buffer_f32);
+    
+    obj_Ball.x         = _x;
+    obj_Ball.y         = _y;
+    obj_Ball.direction = _direction;
+    obj_Ball.speed     = _speed;
+}
