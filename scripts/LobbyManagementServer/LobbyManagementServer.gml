@@ -14,7 +14,7 @@ function send_player_spawn(_steam_id, _slot)
 	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SPAWN_SELF);
 	buffer_write(_b, buffer_u16, _pos.x);
 	buffer_write(_b, buffer_u16, _pos.y);
-	steam_net_pack_send(_steam_id, _b);
+	steam_net_packet_send(_steam_id, _b);
 	buffer_delete(_b);
 	server_player_spawn_at_pos(_steam_id, _pos);
 	send_other_player_spawn(_steam_id, _pos);
