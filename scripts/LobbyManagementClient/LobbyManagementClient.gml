@@ -40,7 +40,7 @@ function client_player_spawn_at_pos(_player_info)
 	var _steamID= _player_info.steamID;
 	var _num	= _player_info.lobbyMemberID;
 	var _loc	= _player_info.startPos;
-	var _inst	= instance_create_layer(_loc.x,loc.y,_layer,obj_Player,
+	var _inst	= instance_create_layer(_loc.x,_loc.y,_layer,obj_Player,
 		{
 			steamName	: _name,
 			steamID		: _steamID,

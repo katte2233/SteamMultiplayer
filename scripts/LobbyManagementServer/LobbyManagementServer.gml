@@ -46,7 +46,7 @@ function send_other_player_spawn(_steam_id, _pos)
 	buffer_write(_b, buffer_u16, _pos.x);
 	buffer_write(_b, buffer_u16, _pos.y);
 	buffer_write(_b, buffer_u64, _steam_id);
-	for (var _i = 1; _i < array_length(_playerList); _i++)
+	for (var _i = 1; _i < array_length(playerList); _i++)
 	{
 		if (playerList[_i].steamID != _steam_id)
 		{
