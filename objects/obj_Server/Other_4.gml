@@ -11,7 +11,7 @@ for (var _player = 0; _player < array_length(playerList); _player++)
 			steamID		: playerList[_player].steamID,
 			lobbyMemberID: _player
 		});
-	playerList[_player].charcter = _inst;
+	playerList[_player].character = _inst;
 	playerList[_player].startPos = _pos;
 	if (playerList[_player].steamID == steamID) character = _inst;
 }
