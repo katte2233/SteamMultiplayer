@@ -39,4 +39,4 @@ for (var _k = 0; _k < array_length(playerList); _k++)
 }
 buffer_delete(_b);
 
-alarm[0] = 5;
+alarm[0] = 1;
