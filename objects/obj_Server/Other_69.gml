@@ -9,6 +9,18 @@ switch(async_load[? "event_type"])
 		{
 			show_debug_message("Player joined: " + _fromName)
 			var _slot = array_length(playerList)
+			
+			array_push(playerList,
+			{
+				steamID: _fromID,
+				steamName: _fromName,
+				character: undefined,
+				startPos: grab_spawn_point(_slot),
+				lobbyMemberID: _slot
+			});
+			
+			send_player_sync(_fromID);
+			send_player_spawn(_fromID,_slot);
 		}
 		break;
 }
