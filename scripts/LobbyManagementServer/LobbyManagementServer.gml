@@ -130,3 +130,17 @@ function update_player_position(_b)
         }
     }
 }
+
+//@self obj_Client
+function update_player_points(_b) {
+    var _steam_id = buffer_read(_b, buffer_u64)
+    var _points = buffer_read(_b, buffer_u8)
+    for (var _i = 0; _i < array_length(playerList); _i++)
+    {
+        if (_steam_id == playerList[_i].steamID)
+        {
+            if (playerList[_i].character == undefined) continue
+            playerList[_i].character.points = _points
+        }
+    }
+}

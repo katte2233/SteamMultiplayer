@@ -71,6 +71,10 @@ while(steam_net_packet_receive())
 		case NETWORK_PACKETS.PLAYER_POSITION:
 			update_player_position(inbuf);
 			break;
+		
+		case NETWORK_PACKETS.PLAYER_POINTS:
+			update_player_points(inbuf);
+			break;
 
 
 		default:
