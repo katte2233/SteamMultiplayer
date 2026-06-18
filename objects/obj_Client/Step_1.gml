@@ -63,6 +63,14 @@ while(steam_net_packet_receive())
 		    character = _inst;
 
 		    break;
+		
+		case NETWORK_PACKETS.SERVER_PLAYER_INPUT:
+			receive_player_input(inbuf);
+			break;
+		
+		case NETWORK_PACKETS.PLAYER_POSITION:
+			update_player_position(inbuf);
+			break;
 
 
 		default:

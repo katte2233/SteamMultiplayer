@@ -58,10 +58,75 @@ function send_other_player_spawn(_steam_id, _pos)
 
 function shrink_player_list()
 {
-	var _shrunkList = playerList;
-	for (var _i = 0; _i < array_length(_shrunkList); _i++)
+	//var _shrunkList = playerList;
+	//for (var _i = 0; _i < array_length(_shrunkList); _i++)
+	//{
+	//	_shrunkList[_i].character = undefined;
+	//}
+	return json_stringify(playerList);
+}
+
+///@self obj_server
+function send_player_input_to_clients(_player_input)
+{
+	if _player_input == undefined then return
+	var _b = buffer_create(13, buffer_fixed, 1); //1+8+1+1+1+1
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SERVER_PLAYER_INPUT);//1
+	buffer_write(_b, buffer_u64, _player_input.steamID);//8
+	buffer_write(_b, buffer_s8, _player_input.xInput);//1
+	buffer_write(_b, buffer_s8, _player_input.yInput);//1
+	buffer_write(_b, buffer_u8, _player_input.runKey);//1
+	buffer_write(_b, buffer_u8, _player_input.actionKey);//1
+	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++)
 	{
-		_shrunkList[_i].character = undefined;
+	    if (obj_Server.playerList[_i].steamID != obj_Server.steamID)
+		{
+	        steam_net_packet_send(obj_Server.playerList[_i].steamID, _b);
+	    }
 	}
-	return json_stringify(_shrunkList);
+	buffer_delete(_b);
+}
+
+
+///@desc Constantly update other clients on every player's position
+///@self obj_Server
+function send_player_positions()
+{
+    for (var _i = 0; _i < array_length(playerList); _i++)
+	{
+        var _player = playerList[_i]
+        if (_player.character == undefined) continue
+        if (_player.steamID == undefined) continue
+        var _b = buffer_create(13, buffer_fixed, 1); //1+8+2+2
+        buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_POSITION);//1
+        buffer_write(_b, buffer_u64, _player.steamID);//8
+        buffer_write(_b, buffer_u16, _player.character.x);//2
+        buffer_write(_b, buffer_u16, _player.character.y);//2
+		
+        for (var _k = 0; _k < array_length(playerList); _k++)
+		{
+            if (playerList[_k].steamID != obj_Server.steamID)
+			{
+                steam_net_packet_send(playerList[_k].steamID, _b);
+            }
+        }
+        buffer_delete(_b)
+    }
+}
+
+//@self obj_Client
+function update_player_position(_b)
+{
+    var _steam_id = buffer_read(_b, buffer_u64);
+    var _x = buffer_read(_b, buffer_u16);
+    var _y = buffer_read(_b, buffer_u16);
+    for (var _i = 0; _i < array_length(playerList); _i++)
+	{
+        if (_steam_id == playerList[_i].steamID)
+		{
+            if (playerList[_i].character == undefined) continue
+            playerList[_i].character.x = _x
+            playerList[_i].character.y = _y
+        }
+    }
 }
