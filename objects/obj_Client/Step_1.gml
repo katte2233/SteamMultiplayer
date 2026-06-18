@@ -75,6 +75,10 @@ while(steam_net_packet_receive())
 		case NETWORK_PACKETS.PLAYER_POINTS:
 			update_player_points(inbuf);
 			break;
+		
+		case NETWORK_PACKETS.BALL_SYNC:
+			update_ball(inbuf);
+			break;
 
 
 		default:
@@ -82,6 +86,3 @@ while(steam_net_packet_receive())
 		    break;
 	}
 }
-
-//Update ball
-update_ball();
