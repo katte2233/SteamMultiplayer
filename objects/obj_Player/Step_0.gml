@@ -26,8 +26,33 @@ if(_inst != noone)
 	}
 }
 
+//Idle vs Running animation + Imprints
+if(xInput != 0)	||	(yInput != 0)
+{
+	if(imprintCooldown < 0)
+	{
+		imprint_snow(self);
+		
+		imprintCooldown = imprintCooldownMax;
+	}else imprintCooldown--;
+	
+	column = 1;
+	framesPerSec = 20;
+}else{
+	column = 0;
+	framesPerSec = 5;
+}
+
 //Animation
 if (steamID == steam_get_user_steam_id())
 {
-    if (mouse_x < x) frame = 1; else frame = 0;
+    if(animationCounter >= animationCounterMax)
+	{
+		frame++;
+		if(frameMax < frame) frame = 0;
+		
+		animationCounter = 0;
+	}else{
+		animationCounter += framesPerSec;
+	}
 }

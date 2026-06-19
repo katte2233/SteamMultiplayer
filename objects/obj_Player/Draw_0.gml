@@ -1,6 +1,15 @@
 /// @desc
+
+//Flipping character depending on what side the mouse is on
+var _column = column;
+
+if(steamID == localSteamID)
+{
+	if(mouse_x < x) _column+=2;
+}
+
 //Draw sprite sheet
-draw_sprite_part(Spr_player,image_index,64*frame,64*column,64,64,x-32,y-42);
+draw_sprite_part_ext(Spr_player,lobbyMemberID,64*frame,64*_column,64,64,x-32,y-42,image_xscale,image_yscale,image_blend,image_alpha);
 
 //Nametag
 draw_set_halign(fa_center);
@@ -9,17 +18,6 @@ draw_set_font(Fon_playerNames);
 draw_set_colour(c_black);
 
 draw_text(x,y-27,steamName);
-
-//Imprints
-if(xInput != 0)	||	(yInput != 0)
-{
-	if(imprintCooldown < 0)
-	{
-		imprint_snow(self);
-		
-		imprintCooldown = imprintCooldownMax;
-	}else imprintCooldown--;
-}
 
 //Debugging
 //draw_point(x,y);

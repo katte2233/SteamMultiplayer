@@ -12,11 +12,17 @@ currentCooldown = 0;
 
 //Sprite sheet
 frame = 0;
+frameMax = 3;
+
 column = 0;
 
+framesPerSec = 5;
+animationCounter = 0;
+animationCounterMax = 60;
+
 //Snow imprints
-imprintCooldown = 1;
-imprintCooldownMax = 0;
+imprintCooldown = 0;
+imprintCooldownMax = 1;
 imprint_snow(self);
 
 init_controls()
