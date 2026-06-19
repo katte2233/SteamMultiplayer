@@ -14,4 +14,8 @@ currentCooldown = 0;
 frame = 0;
 column = 0;
 
+//Snow imprints
+imprintCooldown = 1;
+imprintCooldownMax = 1;
+
 init_controls()
