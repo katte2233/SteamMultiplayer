@@ -12,7 +12,10 @@
     "name":"Game",
     "path":"folders/Objects/Game.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"Obj_button",
+    "path":"objects/Obj_button/Obj_button.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
