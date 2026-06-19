@@ -56,7 +56,7 @@ function send_player_visuals(_frame, _column, _lobby_host)
 }
 
 //@desc Player Visuals Packet Reading for server/client
-function receive_player_visuals(_b, _steam_id)
+function receive_player_visuals(_b, _steam_id=-1)
 {
 	if (_steam_id == -1) _steam_id = buffer_read(_b, buffer_u64);
 	var _frame = buffer_read(_b, buffer_u8);
