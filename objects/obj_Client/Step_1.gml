@@ -73,7 +73,7 @@ while(steam_net_packet_receive())
 			break;
 		
 		case NETWORK_PACKETS.SERVER_PLAYER_VISUALS:
-			receive_player_visuals(inbuf);
+			//receive_player_visuals(inbuf);
 			break;
 		
 		case NETWORK_PACKETS.PLAYER_POINTS:

@@ -17,8 +17,8 @@ while(steam_net_packet_receive())
 			break;
 		
 		case NETWORK_PACKETS.CLIENT_PLAYER_VISUALS:
-		    receive_player_visuals(inbuf, _sender);
-		    send_player_visuals_to_clients(_sender);
+		    var _playerVisuals = receive_player_visuals(inbuf, _sender);
+		    send_player_visuals_to_clients(_playerVisuals);
 		    break;
 		
 		default:

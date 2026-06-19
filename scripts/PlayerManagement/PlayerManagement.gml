@@ -56,16 +56,18 @@ function send_player_visuals(_frame, _column, _lobby_host)
 }
 
 //@desc Player Visuals Packet Reading for server/client
-function receive_player_visuals(_b)
+function receive_player_visuals(_b, _steam_id)
 {
-    var _steam_id = buffer_read(_b, buffer_u64);
-    var _frame = buffer_read(_b, buffer_u8);
+	if (_steam_id == -1) _steam_id = buffer_read(_b, buffer_u64);
+	var _frame = buffer_read(_b, buffer_u8);
     var _column = buffer_read(_b, buffer_u8);
-    
-    var _player = find_player_by_steam_id(_steam_id);
-    if (_player == noone) return;
+	
+   	var _player = find_player_by_steam_id(_steam_id);
+	if (_player == noone) return;
     _player.frame = _frame;
     _player.column = _column;
+	
+	return {frame: _frame, column: _column}
 }
 
 
