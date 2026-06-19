@@ -44,15 +44,12 @@ if(xInput != 0)	||	(yInput != 0)
 }
 
 //Animation
-if (steamID == steam_get_user_steam_id())
+if(animationCounter >= animationCounterMax)
 {
-    if(animationCounter >= animationCounterMax)
-	{
-		frame++;
-		if(frameMax < frame) frame = 0;
+	frame++;
+	if(frameMax < frame) frame = 0;
 		
-		animationCounter = 0;
-	}else{
-		animationCounter += framesPerSec;
-	}
+	animationCounter = 0;
+}else{
+	animationCounter += framesPerSec;
 }
