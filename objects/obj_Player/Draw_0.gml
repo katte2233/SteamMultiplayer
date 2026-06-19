@@ -15,9 +15,7 @@ if(xInput != 0)	||	(yInput != 0)
 {
 	if(imprintCooldown < 0)
 	{
-		with(instance_create_depth(x,y,10,Obj_snowImprint)) image_index = 0;
-		with(instance_create_depth(x,y,20,Obj_snowImprint)) image_index = 1;
-		with(instance_create_depth(x,y,30,Obj_snowImprint)) image_index = 2;
+		imprint_snow(self);
 		
 		imprintCooldown = imprintCooldownMax;
 	}else imprintCooldown--;

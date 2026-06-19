@@ -16,6 +16,7 @@ column = 0;
 
 //Snow imprints
 imprintCooldown = 1;
-imprintCooldownMax = 1;
+imprintCooldownMax = 0;
+imprint_snow(self);
 
 init_controls()

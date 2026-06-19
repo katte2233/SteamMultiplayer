@@ -27,4 +27,7 @@ if(_inst != noone)
 }
 
 //Animation
-if(mouse_x < x) frame = 1; else frame = 0;
+if (steamID == steam_get_user_steam_id())
+{
+    if (mouse_x < x) frame = 1; else frame = 0;
+}

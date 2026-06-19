@@ -1,0 +1,1 @@
+rain_snow(0,0,room_width,1,5,0);
