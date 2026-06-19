@@ -5,7 +5,7 @@ lobbyList = []
 image_xscale = xScale;
 image_yscale = yScale;
 
-lobbyList[0] = instance_create_depth(x, bbox_top+40,-20,obj_DemoLobbyItem);
+lobbyList[0] = instance_create_depth(x, bbox_top+40,-20,Obj_lobbyItem);
 
 steam_lobby_list_add_string_filter("isGamemakerTest","true",steam_lobby_list_filter_eq);
 steam_lobby_list_request();
