@@ -13,7 +13,6 @@ currentCooldown = 0;
 //Sprite sheet
 frame = 0;
 frameMax = 3;
-
 column = 0;
 
 framesPerSec = 5;
@@ -23,7 +22,11 @@ animationCounterMax = 60;
 //Snow imprints
 imprintCooldown = 0;
 imprintCooldownMax = 1;
-imprint_snow(self);
+imprints = imprint_snow(self);
+for (var _i = 0; _i < array_length(imprints); _i++)
+{
+	if (instance_exists(imprints[_i])) imprints[_i].burst(1);
+}
 
 init_controls()
 

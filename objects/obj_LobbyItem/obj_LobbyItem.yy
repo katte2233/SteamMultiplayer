@@ -9,8 +9,8 @@
   "name":"Obj_lobbyItem",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game",
-    "path":"folders/Objects/Game.yy",
+    "name":"Main Menu",
+    "path":"folders/Objects/Game/Main Menu.yy",
   },
   "parentObjectId":{
     "name":"Obj_button",

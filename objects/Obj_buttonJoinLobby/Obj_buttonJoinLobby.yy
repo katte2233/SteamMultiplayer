@@ -10,8 +10,8 @@
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"Obj_button","path":"objects/Obj_button/Obj_button.yy",},"propertyId":{"name":"text","path":"objects/Obj_button/Obj_button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Join Lobby",},
   ],
   "parent":{
-    "name":"Game",
-    "path":"folders/Objects/Game.yy",
+    "name":"Main Menu",
+    "path":"folders/Objects/Game/Main Menu.yy",
   },
   "parentObjectId":{
     "name":"Obj_button",

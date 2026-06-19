@@ -15,6 +15,7 @@ draw_set_font(Fon_playerNames);
 draw_set_colour(c_black);
 
 draw_text(x,y-27,steamName);
+draw_text(x,y-35,instance_number(all));
 
 //Debugging
 //draw_point(x,y);

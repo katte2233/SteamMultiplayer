@@ -20,6 +20,8 @@ function blood_splatter(_x,_y,_dir,_dirSpread,_spdMin,_spdMax,_count)
 
 function imprint_snow(_target)
 {
+	var _imprints = [];
+	
 	//Can be optimized with the stream function instead of burst
 	var _ran = irandom(2);
 	
@@ -33,11 +35,14 @@ function imprint_snow(_target)
         _imp.set_depth(10 + _i);
         _imp.set_speed(0, 0);
         _imp.set_blend(false);
-        _imp.set_life(900, 900);
+        _imp.set_life(1200, 1200);
 		_imp.set_alpha(1,1,0);
 		_imp.set_target(_target);
-        _imp.burst(1);
+		
+		array_push(_imprints, _imp);
     }
+	
+	return _imprints;
 }
 
 function rain_snow(_x, _y, _width, _height, _intensity, _dir)
@@ -57,4 +62,26 @@ function rain_snow(_x, _y, _width, _height, _intensity, _dir)
 	
 	part_emitter_region(_rain.ps, _rain.pe, _x, _x+_width, _y, _y+_height, ps_shape_rectangle, ps_distr_linear);
     _rain.stream(_intensity);
+}
+
+function menu_imprint_snow(_target)
+{
+	//Can be optimized with the stream function instead of burst
+	var _ran = irandom(2);
+	
+    for (var _i = 0; _i < 3; _i++)
+    {
+        var _imp = instance_create_depth(_target.x, _target.y, 10 + _i, Obj_particles);
+        _imp.set_size(1, 1);
+        _imp.set_orientation(0, 0);
+        _imp.set_sprite(Spr_snowImprint, false, false, false);
+        _imp.set_image_index(_ran + _i * 3);
+        _imp.set_depth(10 + _i);
+        _imp.set_direction(180, 180);
+        _imp.set_speed(1, 1);
+        _imp.set_blend(false);
+        _imp.set_life(500, 500);
+        _imp.set_alpha(1, 1, 0);
+        _imp.burst(1);
+    }
 }

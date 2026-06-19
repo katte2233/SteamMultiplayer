@@ -33,7 +33,13 @@ if(xInput != 0)	||	(yInput != 0)
 {
 	if(imprintCooldown < 0)
 	{
-		imprint_snow(self);
+		var _ran = irandom(2);
+		
+		for (var _i = 0; _i < array_length(imprints); _i++)
+		{
+			if (instance_exists(imprints[_i])) imprints[_i].burst(1);
+			imprints[_i].set_image_index(_ran + _i * 3);
+		}
 		
 		imprintCooldown = imprintCooldownMax;
 	}else imprintCooldown--;
