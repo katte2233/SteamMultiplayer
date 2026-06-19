@@ -1,23 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_LobbyItem",
+  "%Name":"Obj_lobbyItem",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_LobbyItem",
+  "name":"Obj_lobbyItem",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_Button","path":"objects/obj_Button/obj_Button.yy",},"propertyId":{"name":"text","path":"objects/obj_Button/obj_Button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_DemoButton","path":"objects/obj_DemoButton/obj_DemoButton.yy",},"propertyId":{"name":"text","path":"objects/obj_DemoButton/obj_DemoButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"",},
   ],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Game",
+    "path":"folders/Objects/Game.yy",
   },
-  "parentObjectId":{
-    "name":"obj_Button",
-    "path":"objects/obj_Button/obj_Button.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

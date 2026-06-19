@@ -3,7 +3,7 @@ selected = false;
 disabled = false;
 
 selectAction = function () {
-	global.client = instance_create_depth(0,0,0,obj_Client)
+	global.client = instance_create_depth(0,0,0,Obj_client)
 	steam_lobby_list_join(lobby_index)
 }
 

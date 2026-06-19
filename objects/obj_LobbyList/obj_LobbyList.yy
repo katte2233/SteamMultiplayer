@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_LobbyList",
+  "%Name":"Obj_lobbyList",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":69,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_LobbyList",
+  "name":"Obj_lobbyList",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Game",
+    "path":"folders/Objects/Game.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -3,7 +3,6 @@ get_controls(isHost, isLocal)
 
 paddle_movement()
 
-
 // Logic for shooting a bullet
 if (actionKey == 1 && currentCooldown <= 0)
 {
@@ -22,11 +21,10 @@ if(_inst != noone)
 	//If we do not collide with our own bullet
 	if(_inst.image_index != image_index)
 	{
-		//Give points to the one who hit us
-		with(_inst.creator) points++;
-		
 		//Get damaged
-		moveSpeed = 1
 		instance_destroy(_inst);
 	}
 }
+
+//Animation
+if(mouse_x < x) frame = 1; else frame = 0;

@@ -6,10 +6,12 @@ isHost = steam_lobby_is_owner();
 isLocal = (localSteamID == steamID)
 image_index = lobbyMemberID
 
-moveSpeed = 5
-fireCooldown = 50
-currentCooldown = 0
+moveSpeed = 3;
+fireCooldown = 50;
+currentCooldown = 0;
 
-points = 0;
+//Sprite sheet
+frame = 0;
+column = 0;
 
 init_controls()

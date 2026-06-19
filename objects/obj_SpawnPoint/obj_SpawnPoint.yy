@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Multiplayer",
-    "path":"folders/Objects/Multiplayer.yy",
+    "path":"folders/Objects/Demo/Multiplayer.yy",
   },
   "parentObjectId":null,
   "persistent":false,

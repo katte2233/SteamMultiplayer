@@ -9,12 +9,12 @@
   "name":"Obj_buttonHostLobby",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Game",
+    "path":"folders/Objects/Game.yy",
   },
   "parentObjectId":{
-    "name":"obj_Button",
-    "path":"objects/obj_Button/obj_Button.yy",
+    "name":"Obj_button",
+    "path":"objects/Obj_button/Obj_button.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

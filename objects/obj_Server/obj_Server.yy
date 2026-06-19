@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Server",
+  "%Name":"Obj_server",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -9,11 +9,11 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_Server",
+  "name":"Obj_server",
   "overriddenProperties":[],
   "parent":{
-    "name":"Multiplayer",
-    "path":"folders/Objects/Multiplayer.yy",
+    "name":"Game",
+    "path":"folders/Objects/Game.yy",
   },
   "parentObjectId":null,
   "persistent":true,
