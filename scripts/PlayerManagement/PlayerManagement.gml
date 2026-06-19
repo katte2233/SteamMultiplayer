@@ -62,10 +62,9 @@ function receive_player_visuals(_b, _steam_id=-1)
 	
    	var _player = find_player_by_steam_id(_steam_id);
 	if (_player == noone) return;
-    _player.frame = _frame;
-    _player.column = _column;
+    _player.direction = _direction;
 	
-	return {frame: _frame, column: _column}
+	return {direction: _direction}
 }
 
 
