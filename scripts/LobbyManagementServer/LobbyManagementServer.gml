@@ -93,11 +93,10 @@ function send_player_visuals_to_clients(_steam_id)
     var _player = find_player_by_steam_id(_steam_id);
     if (_player == noone) return;
     
-    var _b = buffer_create(11, buffer_fixed, 1); // 1 + 8 + 1 + 1
+    var _b = buffer_create(11, buffer_fixed, 1); // 1 + 8 + 2
     buffer_write(_b, buffer_u8, NETWORK_PACKETS.SERVER_PLAYER_VISUALS); // 1
     buffer_write(_b, buffer_u64, _steam_id);                            // 8
-    buffer_write(_b, buffer_u8, _player.frame);                         // 1
-    buffer_write(_b, buffer_u8, _player.column);                        // 1
+    buffer_write(_b, buffer_f16, _player.direction);                    // 2
     
     for (var _k = 0; _k < array_length(playerList); _k++)
     {

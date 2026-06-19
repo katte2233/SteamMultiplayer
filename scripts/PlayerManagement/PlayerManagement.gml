@@ -45,12 +45,11 @@ function receive_player_input(_b, _steam_id=-1)
 }
 
 //@self obj_Client
-function send_player_visuals(_frame, _column, _lobby_host)
+function send_player_visuals(_direction, _lobby_host)
 {
-    var _b = buffer_create(3, buffer_fixed, 1); // 1 + 1 + 1
+    var _b = buffer_create(3, buffer_fixed, 1); // 1 + 2
     buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_VISUALS); // 1
-    buffer_write(_b, buffer_u8, _frame);                                // 1
-    buffer_write(_b, buffer_u8, _column);                               // 1
+    buffer_write(_b, buffer_f16, _direction);                    // 2
     steam_net_packet_send(_lobby_host, _b);
     buffer_delete(_b);
 }
@@ -59,8 +58,7 @@ function send_player_visuals(_frame, _column, _lobby_host)
 function receive_player_visuals(_b, _steam_id=-1)
 {
 	if (_steam_id == -1) _steam_id = buffer_read(_b, buffer_u64);
-	var _frame = buffer_read(_b, buffer_u8);
-    var _column = buffer_read(_b, buffer_u8);
+	var _direction = buffer_read(_b, buffer_f16);
 	
    	var _player = find_player_by_steam_id(_steam_id);
 	if (_player == noone) return;

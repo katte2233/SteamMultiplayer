@@ -3,6 +3,8 @@ get_controls(isHost, isLocal)
 
 paddle_movement()
 
+if(steamID == localSteamID) direction = point_direction(x,y,mouse_x,mouse_y);
+
 // Logic for shooting a bullet
 if (actionKey == 1 && currentCooldown <= 0)
 {
