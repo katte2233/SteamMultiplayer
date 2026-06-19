@@ -17,8 +17,9 @@ while(steam_net_packet_receive())
 			break;
 		
 		case NETWORK_PACKETS.CLIENT_PLAYER_VISUALS:
-			receive_player_visuals(inbuf, _sender);
-			break;
+		    receive_player_visuals(inbuf, _sender);
+		    send_player_visuals_to_clients(_sender);
+		    break;
 		
 		default:
 		    show_debug_message("Unknown packet received: " + string(_type));

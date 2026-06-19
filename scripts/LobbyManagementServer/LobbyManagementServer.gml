@@ -87,6 +87,28 @@ function send_player_input_to_clients(_player_input)
 	buffer_delete(_b);
 }
 
+///@self obj_server
+function send_player_visuals_to_clients(_steam_id)
+{
+    var _player = find_player_by_steam_id(_steam_id);
+    if (_player == noone) return;
+    
+    var _b = buffer_create(11, buffer_fixed, 1); // 1 + 8 + 1 + 1
+    buffer_write(_b, buffer_u8, NETWORK_PACKETS.SERVER_PLAYER_VISUALS); // 1
+    buffer_write(_b, buffer_u64, _steam_id);                            // 8
+    buffer_write(_b, buffer_u8, _player.frame);                         // 1
+    buffer_write(_b, buffer_u8, _player.column);                        // 1
+    
+    for (var _k = 0; _k < array_length(playerList); _k++)
+    {
+        if (playerList[_k].steamID != Obj_server.steamID)
+        {
+            steam_net_packet_send(playerList[_k].steamID, _b);
+        }
+    }
+    buffer_delete(_b);
+}
+
 
 ///@desc Constantly update other clients on every player's position
 ///@self obj_Server

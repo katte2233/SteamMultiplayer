@@ -12,9 +12,6 @@ function send_player_input(_input, _lobby_host)
 
 	var _runKey = _input.runKey;
 	var _actionKey = _input.actionKey;
-	
-	var _frame = _input.frame;
-    var _column = _input.column;
 
 	var _b = buffer_create(5, buffer_fixed, 1); // 1 + 1 + 1 + 1 + 1
 	
@@ -43,8 +40,6 @@ function receive_player_input(_b, _steam_id=-1)
 	_player.yInput = _yInput;
 	_player.runKey = _runKey;
 	_player.actionKey = _actionKey;
-    _player.frame = _frame;
-    _player.column = _column;
 	
 	return {steamID: _steam_id, xInput: _xInput, yInput: _yInput, runKey: _runKey, actionKey: _actionKey}
 }
@@ -53,15 +48,17 @@ function receive_player_input(_b, _steam_id=-1)
 function send_player_visuals(_frame, _column, _lobby_host)
 {
     var _b = buffer_create(3, buffer_fixed, 1); // 1 + 1 + 1
-    buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_VISUALS);
-    buffer_write(_b, buffer_u8, _frame);
-    buffer_write(_b, buffer_u8, _column);
+    buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_VISUALS); // 1
+    buffer_write(_b, buffer_u8, _frame);                                // 1
+    buffer_write(_b, buffer_u8, _column);                               // 1
     steam_net_packet_send(_lobby_host, _b);
     buffer_delete(_b);
 }
 
-function receive_player_visuals(_b, _steam_id)
+//@desc Player Visuals Packet Reading for server/client
+function receive_player_visuals(_b)
 {
+    var _steam_id = buffer_read(_b, buffer_u64);
     var _frame = buffer_read(_b, buffer_u8);
     var _column = buffer_read(_b, buffer_u8);
     
