@@ -7,9 +7,7 @@
   ],
   "managed":true,
   "name":"Obj_lobbyItem",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_DemoButton","path":"objects/obj_DemoButton/obj_DemoButton.yy",},"propertyId":{"name":"text","path":"objects/obj_DemoButton/obj_DemoButton.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"",},
-  ],
+  "overriddenProperties":[],
   "parent":{
     "name":"Game",
     "path":"folders/Objects/Game.yy",
