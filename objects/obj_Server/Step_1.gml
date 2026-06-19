@@ -16,6 +16,10 @@ while(steam_net_packet_receive())
 			send_player_input_to_clients(_playerInput);
 			break;
 		
+		case NETWORK_PACKETS.CLIENT_PLAYER_VISUALS:
+			receive_player_visuals(inbuf, _sender);
+			break;
+		
 		default:
 		    show_debug_message("Unknown packet received: " + string(_type));
 		    break;

@@ -1,0 +1,1 @@
+send_player_visuals(frame, column, lobbyHost);

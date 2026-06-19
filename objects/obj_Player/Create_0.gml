@@ -20,3 +20,5 @@ imprintCooldownMax = 0;
 imprint_snow(self);
 
 init_controls()
+
+alarm[0] = 5;

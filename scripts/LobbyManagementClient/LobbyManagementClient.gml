@@ -49,3 +49,4 @@ function client_player_spawn_at_pos(_player_info)
 	
 	return _inst;
 }
+
