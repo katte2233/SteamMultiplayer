@@ -12,14 +12,19 @@ function send_player_input(_input, _lobby_host)
 
 	var _runKey = _input.runKey;
 	var _actionKey = _input.actionKey;
+	
+	var _frame = _input.frame;
+    var _column = _input.column;
 
-	var _b = buffer_create(5, buffer_fixed, 1); // 1 + 1 + 1 + 1 + 1
+	var _b = buffer_create(7, buffer_fixed, 1); // 1 + 1 + 1 + 1 + 1 + 1 + 1
 	
 	buffer_write(_b, buffer_u8, NETWORK_PACKETS.CLIENT_PLAYER_INPUT); // 1
 	buffer_write(_b, buffer_s8, _xInput);                             // 1
 	buffer_write(_b, buffer_s8, _yInput);                             // 1
 	buffer_write(_b, buffer_u8, _runKey);                             // 1
 	buffer_write(_b, buffer_u8, _actionKey);                          // 1
+    buffer_write(_b, buffer_u8, _frame);                              // 1
+    buffer_write(_b, buffer_u8, _column);                             // 1
 
 	steam_net_packet_send(_lobby_host, _b);
 	buffer_delete(_b);
@@ -33,6 +38,8 @@ function receive_player_input(_b, _steam_id=-1)
 	var _yInput = buffer_read(_b, buffer_s8);
 	var _runKey = buffer_read(_b, buffer_s8);
 	var _actionKey = buffer_read(_b, buffer_s8);
+    var _frame = buffer_read(_b, buffer_u8);
+    var _column = buffer_read(_b, buffer_u8);
 	
 	var _player = find_player_by_steam_id(_steam_id);
 	if (_player == noone) return;
@@ -40,8 +47,10 @@ function receive_player_input(_b, _steam_id=-1)
 	_player.yInput = _yInput;
 	_player.runKey = _runKey;
 	_player.actionKey = _actionKey;
+    _player.frame = _frame;
+    _player.column = _column;
 	
-	return {steamID: _steam_id, xInput: _xInput, yInput: _yInput, runKey: _runKey, actionKey: _actionKey}
+	return {steamID: _steam_id, xInput: _xInput, yInput: _yInput, runKey: _runKey, actionKey: _actionKey, frame: _frame, column: _column}
 }
 
 //@desc Finding player object on client/server

@@ -21,4 +21,4 @@ if(instance_exists(obj_Ball))
 	buffer_delete(_b);
 }
 
-alarm[0] = 1;
+alarm[0] = 5;
