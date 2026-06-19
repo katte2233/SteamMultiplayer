@@ -40,7 +40,6 @@ while(steam_net_packet_receive())
 
 
 		case NETWORK_PACKETS.SPAWN_SELF:
-
 		    for (var i = 0; i < array_length(playerList); i++)
 		    {
 		        if (playerList[i].steamID == steamID)
@@ -61,7 +60,9 @@ while(steam_net_packet_receive())
 
 		    playerList[0].character = _inst;
 		    character = _inst;
-
+			
+			//Create camera
+			with(instance_create_layer(_x,_y,"Instances",Obj_cam)) character = _inst;
 		    break;
 		
 		case NETWORK_PACKETS.SERVER_PLAYER_INPUT:
