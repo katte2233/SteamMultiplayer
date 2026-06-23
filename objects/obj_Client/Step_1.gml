@@ -79,7 +79,7 @@ while(steam_net_packet_receive())
 		
 		case NETWORK_PACKETS.SERVER_CONTROL_TANK:
 		    var _steam_id = buffer_read(inbuf, buffer_u64);
-		    var _player = find_player_by_steam_id(_steam_id);
+		    var _player = find_player_by_steam_id(_sender);
 		    if (_player != noone)
 		        _player.controlling = Obj_tank;
 		    break;

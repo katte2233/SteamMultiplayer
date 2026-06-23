@@ -22,8 +22,8 @@ while(steam_net_packet_receive())
 		    break;
 			
 		case NETWORK_PACKETS.CLIENT_CONTROL_TANK:
-		    var _steam_id = buffer_read(inbuf, buffer_u64);
-		    var _player = find_player_by_steam_id(_steam_id);
+		    var _player = find_player_by_steam_id(_sender);
+			show_debug_message("Tank control received for: " + string(_player));
 		    if (_player != noone)
 		        _player.controlling = Obj_tank;
 		    break;
