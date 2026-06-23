@@ -43,7 +43,7 @@ function receive_player_input(_b, _steam_id=-1)
 	_player.yInput = _yInput;
 	_player.runKey = _runKey;
 	_player.interactKey = _interactKey;
-	_player._jumpKey = _jumpKey;
+	_player.jumpKey = _jumpKey;
 	
 	return {steamID: _steam_id,
 		xInput: _xInput,
