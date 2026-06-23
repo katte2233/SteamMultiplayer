@@ -16,11 +16,20 @@ function get_controls(_is_host, _local)
 		yInput = (downKey - upKey);
 		
 		//Action inputs
-		runKey = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-		actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+		interactKey = keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed( 0, gp_face4 );
+		runKey = keyboard_check(vk_shift) || gamepad_button_check(0, gp_face3);
+		jumpKey = keyboard_check(vk_space) || gamepad_button_check(0, gp_face1);
 	
 		//Send Host Inputs to Clients
-		var _input = {steamID: steamID, xInput: xInput, yInput: yInput, runKey: runKey, actionKey: actionKey}
+		var _input = {steamID: steamID,
+			xInput: xInput,
+			yInput: yInput,
+			runKey: runKey,
+			interactKey: interactKey,
+			jumpKey: jumpKey
+			}
+		
+		
 		send_player_input_to_clients(_input);
 	}
 	
@@ -32,10 +41,19 @@ function get_controls(_is_host, _local)
 		var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
 		
 		//Action inputs
+		var _interactKey = keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed( 0, gp_face4 );
 		var _runKey = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-		var _actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+		var _jumpKey = keyboard_check(vk_space) || gamepad_button_check(0, gp_face1);
 		
-		var _input = {rightKey: _rightKey, leftKey: _leftKey, downKey: _downKey, upKey: _upKey, runKey: _runKey, actionKey: _actionKey}
+		var _input = {rightKey: _rightKey,
+			leftKey: _leftKey,
+			downKey: _downKey,
+			upKey: _upKey,
+			runKey: _runKey,
+			interactKey: _interactKey,
+			jumpKey: _jumpKey
+			}
+		
 		send_player_input(_input,lobbyHost);
 	}
 
@@ -53,6 +71,7 @@ function init_controls(){
 	
 	//Action inputs
 	runKey		= 0
-	actionKey	= 0
+	interactKey	= 0
+	jumpKey	= 0
 		
 }

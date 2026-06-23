@@ -70,13 +70,14 @@ function shrink_player_list()
 function send_player_input_to_clients(_player_input)
 {
 	if _player_input == undefined then return
-	var _b = buffer_create(13, buffer_fixed, 1); //1+8+1+1+1+1
+	var _b = buffer_create(14, buffer_fixed, 1); //1+8+1+1+1+1+1
 	buffer_write(_b, buffer_u8, NETWORK_PACKETS.SERVER_PLAYER_INPUT);//1
 	buffer_write(_b, buffer_u64, _player_input.steamID);//8
 	buffer_write(_b, buffer_s8, _player_input.xInput);//1
 	buffer_write(_b, buffer_s8, _player_input.yInput);//1
 	buffer_write(_b, buffer_u8, _player_input.runKey);//1
-	buffer_write(_b, buffer_u8, _player_input.actionKey);//1
+	buffer_write(_b, buffer_u8, _player_input.interactKey);//1
+	buffer_write(_b, buffer_u8, _player_input.jumpKey);//1
 	for (var _i = 0; _i < array_length(Obj_server.playerList); _i++)
 	{
 	    if (Obj_server.playerList[_i].steamID != Obj_server.steamID)

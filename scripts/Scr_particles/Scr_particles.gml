@@ -18,7 +18,7 @@ function blood_splatter(_x,_y,_dir,_dirSpread,_spdMin,_spdMax,_count)
 	_instBlood.burst(_count);
 }
 
-function imprint_snow(_target)
+function imprint_snow(_target,_xOffset,_yOffset)
 {
 	var _imprints = [];
 	
@@ -27,7 +27,7 @@ function imprint_snow(_target)
 	
     for (var _i = 0; _i < 3; _i++)
     {
-        var _imp = instance_create_depth(_target.x, _target.y, 10 + _i, Obj_particles);
+        var _imp = instance_create_depth(_target.x+_xOffset, _target.y+_yOffset, 110 + _i, Obj_particles);
         _imp.set_size(1, 1);
         _imp.set_orientation(0, 0);
         _imp.set_sprite(Spr_snowImprint, false, false, false);
@@ -37,12 +37,39 @@ function imprint_snow(_target)
         _imp.set_blend(false);
         _imp.set_life(1200, 1200);
 		_imp.set_alpha(1,1,0);
+		
 		_imp.set_target(_target);
+		_imp.set_offset(_xOffset,_yOffset);
 		
 		array_push(_imprints, _imp);
     }
 	
 	return _imprints;
+}
+
+function emit_ozone(_target,_xOffset,_yOffset,_intensity,_dir)
+{
+	var _ozone = [];
+	
+    var _ozo = instance_create_depth(_target.x+_xOffset, _target.y+_yOffset, -5, Obj_particles);
+    _ozo.set_size(.2, .5, 0.001);
+    _ozo.set_orientation(0, irandom(359));
+    _ozo.set_depth(-5);
+	_ozo.set_direction(_dir-20,_dir+20);
+    _ozo.set_speed(.5, 1);
+    _ozo.set_blend(false);
+    _ozo.set_life(50, 50);
+	_ozo.set_sprite(Spr_ozone, true, true, false);
+		
+	var _ran = random_range(0.4,0.8);
+	_ozo.set_alpha(_ran,_ran+0.2,0);
+		
+	_ozo.set_target(_target);
+	_ozo.set_offset(_xOffset,_yOffset);
+		
+	array_push(_ozone, _ozo);
+	
+	return _ozone;
 }
 
 function rain_snow(_x, _y, _width, _height, _intensity, _dir)
@@ -63,6 +90,8 @@ function rain_snow(_x, _y, _width, _height, _intensity, _dir)
 	part_emitter_region(_rain.ps, _rain.pe, _x, _x+_width, _y, _y+_height, ps_shape_rectangle, ps_distr_linear);
     _rain.stream(_intensity);
 }
+
+#region Menu functions
 
 function menu_imprint_snow(_target)
 {
@@ -85,3 +114,5 @@ function menu_imprint_snow(_target)
         _imp.burst(1);
     }
 }
+
+#endregion
