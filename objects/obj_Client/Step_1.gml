@@ -77,6 +77,13 @@ while(steam_net_packet_receive())
 			receive_player_visuals(inbuf);
 			break;
 		
+		case NETWORK_PACKETS.SERVER_CONTROL_TANK:
+		    var _steam_id = buffer_read(inbuf, buffer_u64);
+		    var _player = find_player_by_steam_id(_steam_id);
+		    if (_player != noone)
+		        _player.controlling = Obj_tank;
+		    break;
+		
 		case NETWORK_PACKETS.PLAYER_POINTS:
 			update_player_points(inbuf);
 			break;
